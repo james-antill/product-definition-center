@@ -104,10 +104,11 @@ class ReleaseVariantFilter(django_filters.FilterSet):
     uid     = filters.MultiValueFilter(name='variant_uid')
     name    = filters.MultiValueFilter(name='variant_name')
     type    = filters.MultiValueFilter(name='variant_type__name')
+    version    = filters.MultiValueFilter(name='variant_version')
 
     class Meta:
         model = Variant
-        fields = ('release', 'id', 'uid', 'name', 'type')
+        fields = ('release', 'id', 'uid', 'name', 'type', 'version')
 
 
 class ReleaseGroupFilter(django_filters.FilterSet):

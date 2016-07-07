@@ -82,6 +82,7 @@ class Migration(migrations.Migration):
                 ('variant_id', models.CharField(max_length=100)),
                 ('variant_uid', models.CharField(max_length=200)),
                 ('variant_name', models.CharField(max_length=300)),
+                ('variant_version', models.CharField(max_length=100)),
                 ('deleted', models.BooleanField(default=False)),
                 ('release', models.ForeignKey(to='release.Release')),
             ],

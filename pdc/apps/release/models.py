@@ -279,13 +279,14 @@ class Variant(models.Model):
     variant_uid         = models.CharField(max_length=200, blank=False)
     variant_name        = models.CharField(max_length=300, blank=False)
     variant_type        = models.ForeignKey(VariantType)
+    variant_version     = models.CharField(max_length=100, blank=False)
     deleted             = models.BooleanField(default=False)
 
     class Meta:
         unique_together = (
-            ("release", "variant_uid"),
+            ("release", "variant_uid", "variant_version"),
         )
-        ordering = ("variant_uid", )
+        ordering = ("variant_uid", "variant_version")
 
     def __unicode__(self):
         return u"%s" % (self.variant_uid, )
@@ -318,6 +319,7 @@ class Variant(models.Model):
             'variant_name': self.variant_name,
             'variant_type': self.variant_type.name,
             'arches': self.arches,
+            'variant_version': self.variant_version,
         }
 
 
